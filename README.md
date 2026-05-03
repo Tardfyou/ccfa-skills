@@ -4,11 +4,13 @@
 
 它面向 CCF-A 和顶级计算机会议论文图，重点支持 AI、系统、网安、软工、PL、体系结构和网络方向的数据图、密集 benchmark 图，以及需要时使用的架构类复合图。
 
-## 最新示例
+## 最新可运行示例
 
-当前最新 showcase 是 `fig4-single-cell-systems-style`。它使用经过审计的公开 MLCommons Inference v5.1 summary 数据，生成一张偏花哨、信息密度高的多面板 benchmark landscape。
+当前最新 showcase 是 `fig4-single-cell-systems-style`。它使用经过审计的公开 MLCommons Inference v5.1 summary 数据，生成一张高信息密度的多面板 benchmark landscape。
 
 ![fig4 single cell systems style](figures/fig4-single-cell-systems-style/exports/fig4_single_cell_systems_style.png)
+
+这张图同时测试了 skill 里最容易翻车的几件事：大热力图、底部多个 support panels、图例、色条、面板标题、密集行标签和最终导出审计。当前导出的 SVG、PDF、PNG 都已经通过审计，SVG 没有检测到明显文字重叠。
 
 可查看这些文件：
 
@@ -18,6 +20,20 @@
 - 示例数据：`figures/fig4-single-cell-systems-style/data/mlcommons_inference_v5_1_public_summary_audited.csv`
 - 绘图源码：`figures/fig4-single-cell-systems-style/source/plot_fig4_single_cell_systems_style.py`
 - 审计结果：`figures/fig4-single-cell-systems-style/exports/figure_audit.txt`
+
+## 图类参考
+
+`ccfa-paper-figures` 会优先服务数据图。数据足够丰富时，它会自动选择更有视觉冲击力但不虚构信息的图类。
+
+![fig4 gallery reference](ccfa-paper-figures/assets/gallery/fig4-single-cell-systems-rich.png)
+
+上图是迁移自 nature-style gallery 的风格参考，用来提示“一个 dominant panel 加多个 support panels”的版式方向。实际论文图仍必须来自用户提供、公开审计通过或许可明确的数据。
+
+下面是当前库存里的 chart atlas 示例，用来帮助 agent 判断输入数据更适合哪种表达方式。
+
+![heatmap atlas](ccfa-paper-figures/assets/chart-atlas/atlas-03-heatmaps.png)
+
+![scatter bubble atlas](ccfa-paper-figures/assets/chart-atlas/atlas-04-scatter-bubble.png)
 
 ## 使用方式
 
@@ -37,7 +53,9 @@ Use $ccfa-paper-figures.
 - 生成 PDF、SVG、PNG。
 - 保留可复现源码和数据文件。
 - 运行 figure audit。
-- 修复所有文字重叠、字号过小、图例遮挡和裁切问题后，才说完成。
+- 修复所有文字重叠、字号过小、图例遮挡、色条标签碰撞和裁切问题后，才说完成。
+- 如果多面板标题或 panel letter 太挤，把 panel letter 合并进左对齐标题。
+- 如果 ECDF 或 scatter 的直接标注太密，改用紧凑图例。
 
 CSV:
 [在这里粘贴数据，或给出本地 CSV 路径]
@@ -48,6 +66,19 @@ CSV:
 ```text
 python ccfa-paper-figures/scripts/suggest_showpiece.py figures/fig4-single-cell-systems-style/data/mlcommons_inference_v5_1_public_summary_audited.csv --venue OSDI --domain "AI systems" --style showpiece
 ```
+
+脚本会输出推荐图类、panel plan 和一段可直接交给新 agent 的 self-prompt。
+
+## 现在会自动考虑的小问题
+
+最近一次优化已经把 showcase 图里暴露出的细节写回 skill：
+
+- SVG 中最小可见文字不能低于 6 pt/px。
+- 多面板很挤时，panel letter 可以合并进标题，避免漂浮字母撞标题。
+- ECDF、scatter 直接标注如果太近，要改用紧凑图例。
+- 色条单位如果和刻度碰撞，要移到 panel title 或 caption。
+- 热力图行标签太密时，优先缩短标签、增高画布或减少显示项，而不是无限缩小字号。
+- Windows 下保存审计日志时使用 UTF-8，保证 GitHub 上能直接阅读。
 
 ## 当前能力
 

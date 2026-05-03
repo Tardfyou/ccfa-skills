@@ -40,8 +40,16 @@ failures, but verify the final target venue instructions when they affect submis
 
 - Final width is chosen intentionally: single column, double column, or venue-specific.
 - Text remains readable at final paper size, usually around 7-10 pt.
+- The smallest SVG text is not below 6 pt/px. If dense labels need to be near 6 pt, verify them in
+  the rendered final-size PDF/PNG, not only in the source script.
 - No text overlaps at final paper size. Check axis labels, tick labels, legends, panel labels,
   callouts, direct labels, value annotations, colorbar labels, and heatmap cell labels.
+- In dense multi-panel layouts, panel letters do not float into titles or neighboring axes. If they
+  collide, combine them with the left-aligned title, for example `a  Throughput by scenario`.
+- Direct labels are used only where they do not collide. If ECDF/scatter labels are clustered, use a
+  compact legend in unused whitespace or outside the axes.
+- Colorbar unit labels do not touch tick labels. Move the unit into the panel title or caption when
+  a vertical colorbar is too narrow for a separate label.
 - Labels do not collide with plotted marks in a way that changes the reading of the data.
 - Line widths and markers remain visible after scaling.
 - Legends do not hide data and are replaced by direct labels when cleaner.
@@ -67,6 +75,8 @@ failures, but verify the final target venue instructions when they affect submis
 - The manuscript compiles with the figure included.
 - `figure_audit.py` SVG text-overlap warnings are resolved or explicitly checked by rendered visual
   inspection before the figure is called ready.
+- Audit logs committed to the repo are UTF-8 text. On Windows PowerShell, prefer:
+  `python scripts/figure_audit.py ... | Set-Content -Encoding UTF8 figures/<id>/exports/figure_audit.txt`.
 
 ## Domain-Specific Data Gates
 

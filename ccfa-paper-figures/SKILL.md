@@ -135,7 +135,9 @@ Graphviz, Mermaid, D2, or diagram-first workflow languages the default path.
    - ACM TAPS-compatible: `.svg`, `.pdf`, `.eps`, `.png`, `.jpg`, `.tiff`, or `.emf`.
 7. Audit final exports with `scripts/figure_audit.py` where possible, then inspect visually at final
    paper size. Do not call a figure ready until small text, legends, color encodings, uncertainty
-   notation, panel labels, and all text placement are readable with no overlaps.
+   notation, panel labels, and all text placement are readable with no overlaps. On Windows, write
+   audit logs with UTF-8, for example pipe output to `Set-Content -Encoding UTF8`; avoid UTF-16
+   redirected logs that become hard to read on GitHub.
 
 ## Data-Figure Rules
 
@@ -146,6 +148,15 @@ Graphviz, Mermaid, D2, or diagram-first workflow languages the default path.
 - Do not accept overlapping text. Axis labels, tick labels, legends, annotations, panel letters,
   callouts, direct labels, colorbar labels, and in-cell heatmap text must not collide with each other
   or with dense marks at final paper size.
+- In tight multi-panel figures, fold panel letters into left-aligned panel titles when standalone
+  panel-letter text would collide with titles, axes, or neighboring panels.
+- Use direct labels only when they are spatially stable and sparse. For ECDF/scatter panels with
+  nearby curves or points, switch to a compact outside/in-corner legend instead of forcing labels
+  onto the data.
+- Treat colorbars as text-collision risks: give tick labels and unit labels enough padding, or move
+  the unit into the panel title/caption when the colorbar label touches ticks.
+- Never let the smallest visible text fall below 6 pt/px in SVG exports; prefer 7-10 pt and use
+  6-6.5 pt only for dense but still readable tick labels.
 - Keep final-size axis/tick/legend text around 7-10 pt unless the venue template requires otherwise.
 - Put units in axis labels, define acronyms in the caption, and keep captions out of the image.
 - Make every multi-panel figure non-redundant: main result, mechanism, boundary, robustness, or case

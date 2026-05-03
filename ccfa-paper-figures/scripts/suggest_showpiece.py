@@ -93,6 +93,11 @@ def choose_plan(profile: dict[str, Any], venue: str, domain: str, style: str) ->
             "Use only supplied, audited public, or permission-cleared values.",
             "Do not keep generated charts as reusable gallery assets.",
             "Run figure_audit.py and resolve text-overlap warnings before calling the figure ready.",
+            "Keep all visible SVG text at or above 6 pt/px; shorten labels or enlarge panels instead of shrinking below that.",
+            "For tight multi-panel figures, fold panel letters into left-aligned titles if separate letters collide.",
+            "Use compact legends instead of direct labels when ECDF/scatter labels would cluster or overlap.",
+            "Move colorbar units into the panel title or caption when a colorbar label touches tick labels.",
+            "On Windows, save audit logs as UTF-8 text, for example with Set-Content -Encoding UTF8.",
         ],
     }
 

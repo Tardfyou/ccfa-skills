@@ -244,3 +244,9 @@ Anti-redundancy checks:
 - Each panel should have a distinct axis-label vocabulary or a distinct claim.
 - Put large legends in a dedicated axis with `make_legend_axis` or outside the data region with
   `move_legend_outside`.
+- In cramped showpiece layouts, combine panel letters with left-aligned titles and avoid separate
+  floating panel-letter text.
+- If direct labels collide in ECDF/scatter panels, replace them with a compact legend placed in true
+  empty space or outside the axes.
+- Treat colorbars as part of the text layout: pad their labels, or move units into the panel title
+  when the colorbar is narrow.

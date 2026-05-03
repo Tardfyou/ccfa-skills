@@ -138,6 +138,22 @@ into a legend-only axis so they never cover data.
 
 Template support: `--legend-outside`.
 
+### Dense Multi-Panel Hygiene
+
+Apply these rules before exporting showpiece figures, especially benchmark landscapes with a large
+dominant heatmap and several support panels:
+
+- Put the panel letter inside the left-aligned panel title when external panel labels would collide
+  with titles, tick labels, or neighboring panels.
+- Remove nonessential axis labels from table-like heatmaps when row/column tick labels already carry
+  the meaning.
+- Use compact legends instead of direct curve labels when ECDF or scatter labels are close together.
+- Put colorbar units in the panel title or caption if the colorbar is too narrow for a separate label.
+- Keep all explicit font sizes at or above 6 pt/px in SVG. If a row-label list needs smaller text,
+  shorten labels, increase the figure height, or show fewer rows instead.
+- Re-run export and audit after each spacing change; changing `bbox_inches`, legends, or colorbars can
+  alter the final crop.
+
 ### Text Collision Control
 
 Final figures must have no overlapping text. This is a readiness gate, not a polish preference.

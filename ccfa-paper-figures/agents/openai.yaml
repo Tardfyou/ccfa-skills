@@ -1,4 +1,4 @@
 interface:
   display_name: "CCF-A Paper Figures"
   short_description: "Publication-ready data, showpiece, and architecture figures for CCF-A CS venues"
-  default_prompt: "Use $ccfa-paper-figures to create a camera-ready CCF-A data, showpiece, or schematic-led architecture figure with audited provenance and exports. If the user only supplies data and a vague style request, profile the CSV first and choose the richest truthful figure layout yourself."
+  default_prompt: "Use $ccfa-paper-figures to create a camera-ready CCF-A data, showpiece, or schematic-led architecture figure with audited provenance and exports. If the user only supplies data and a vague style request, profile the CSV first, choose the richest truthful figure layout yourself, and fix text-overlap, tiny-font, legend, colorbar, and crop issues before calling it ready."
