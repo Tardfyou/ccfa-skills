@@ -1,0 +1,10 @@
+﻿[PASS] figures\fig4-single-cell-systems-style\exports\fig4_single_cell_systems_style.svg (102.3 KB)
+  note: Vector-capable format detected.
+  note: SVG contains raster <image> elements; verify embedded image DPI.
+  note: No obvious SVG text-label overlap detected by heuristic scan.
+[PASS] figures\fig4-single-cell-systems-style\exports\fig4_single_cell_systems_style.pdf (46.0 KB)
+  note: Vector-capable format detected.
+  note: PDF contains raster images; verify their effective DPI at final size.
+  note: PDF text overlap cannot be reliably detected by this lightweight audit; inspect rendered output.
+[PASS] figures\fig4-single-cell-systems-style\exports\fig4_single_cell_systems_style.png (860.1 KB)
+  note: PNG dimensions: 4092 x 4766 px.

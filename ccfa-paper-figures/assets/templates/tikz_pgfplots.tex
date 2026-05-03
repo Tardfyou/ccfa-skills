@@ -1,0 +1,28 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\definecolor{ccfblue}{HTML}{0072B2}
+\definecolor{ccforange}{HTML}{D55E00}
+
+\begin{document}
+\pgfplotstableread[col sep=comma]{data/results.csv}\datatable
+\begin{tikzpicture}
+\begin{axis}[
+  width=3.5in,
+  height=2.35in,
+  xlabel={X label},
+  ylabel={Y label},
+  tick label style={font=\footnotesize},
+  label style={font=\footnotesize},
+  legend style={draw=none, font=\footnotesize, at={(0.98,0.02)}, anchor=south east},
+  axis line style={line width=0.6pt},
+  tick style={line width=0.5pt}
+]
+\addplot+[ccfblue, mark=o, line width=0.9pt] table[x=x,y=series_a] {\datatable};
+\addlegendentry{Series A}
+\addplot+[ccforange, mark=square*, line width=0.9pt] table[x=x,y=series_b] {\datatable};
+\addlegendentry{Series B}
+\end{axis}
+\end{tikzpicture}
+\end{document}

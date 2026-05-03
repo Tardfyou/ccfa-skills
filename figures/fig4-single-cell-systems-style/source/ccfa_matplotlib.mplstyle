@@ -1,0 +1,38 @@
+# CCF-A/top CS paper figure defaults.
+figure.figsize: 3.5, 2.35
+figure.dpi: 150
+savefig.dpi: 300
+savefig.bbox: tight
+savefig.pad_inches: 0.02
+savefig.transparent: False
+
+font.family: sans-serif
+font.sans-serif: Arial, Helvetica, DejaVu Sans
+font.size: 8.5
+axes.titlesize: 8.5
+axes.labelsize: 8.5
+xtick.labelsize: 7.5
+ytick.labelsize: 7.5
+legend.fontsize: 7.5
+
+axes.linewidth: 0.8
+lines.linewidth: 1.3
+lines.markersize: 4.5
+patch.linewidth: 0.8
+grid.linewidth: 0.35
+xtick.major.width: 0.6
+ytick.major.width: 0.6
+xtick.minor.width: 0.4
+ytick.minor.width: 0.4
+xtick.direction: out
+ytick.direction: out
+
+axes.grid: False
+legend.frameon: False
+legend.handlelength: 1.4
+legend.borderaxespad: 0.2
+
+pdf.fonttype: 42
+ps.fonttype: 42
+svg.fonttype: none
+axes.prop_cycle: cycler(color=['0072B2', 'E69F00', '009E73', 'D55E00', 'CC79A7', '56B4E9', 'F0E442', '666666'])
